@@ -4,7 +4,7 @@ $(function() {
 
   var editor = new JSONEditor(document.getElementById('advanced-json-editor-form'),{
     theme: 'bootstrap2',
-    disable_properties: true,
+    disable_properties: false,
     schema: JSON.parse( $('#schema-json input').val() )
   });
 
@@ -18,8 +18,8 @@ $(function() {
 
   editor.on('change',function() {
     console.log( editor.getValue() );
-
-    $('#advanced-json-editor input').val( JSON.stringify( editor.getValue() ) );
+    console.log( JSON.stringify(editor.getValue()).replace(/\\"/g, '"'));
+    $('#advanced-json-editor input').val( JSON.stringify(editor.getValue()).replace(/\\"/g, '"') );
   });
 
   // fix text size
