@@ -1,0 +1,13 @@
+<%= javascript_include_tag "rails_admin_advanced_json_editor/rails_admin_advanced_json_editor", media: 'all' %>
+<div id="advanced-json-editor" style="display: none">
+  <% # %input{value: field.json, name: field.dom_name, id: field.json_dom_name} %>
+  <%= form.send :text_field, field.name, :id => field.json_dom_name, value: raw(field.json) %>
+  <% # = form.send field.view_helper, field.method_name, field.html_attributes %>
+</div>
+<div id="advanced-json-editor-form"></div>
+<% config = File.join(Rails.root, 'config', 'json_editor_schema.json') %>
+<% contents = JSON.parse(File.read(config))[field.json_dom_name] %>
+<% contents = raw contents.to_json %>
+<div id="schema-json" style="display: none">
+  <input id="<%= field.json_dom_name %>" value="<%= contents %>"></input>
+</div>
