@@ -1,3 +1,5 @@
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+
 <%= javascript_include_tag "rails_admin_advanced_json_editor/rails_admin_advanced_json_editor", media: 'all' %>
 <div id="advanced-json-editor" style="display: none">
   <% # %input{value: field.json, name: field.dom_name, id: field.json_dom_name} %>
@@ -9,5 +11,5 @@
 <% contents = JSON.parse(File.read(config))[field.json_dom_name] %>
 <% contents = raw contents.to_json %>
 <div id="schema-json" style="display: none">
-  <input id="<%= field.json_dom_name %>" value="<%= contents %>"></input>
+  <input id="<%= field.json_dom_name %>" value="<%= contents.to_json %>"></input>
 </div>
